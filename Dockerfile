@@ -1,8 +1,6 @@
 FROM alpine:latest
 
-ARG OPENJDK_VERSION=15.0.3_p3-r0
-
-RUN apk add --no-cache openjdk15="$OPENJDK_VERSION"
+RUN apk add --no-cache openjdk15-jdk
 
 # WORKDIR /usr
 
