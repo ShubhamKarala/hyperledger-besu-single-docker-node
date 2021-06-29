@@ -1,6 +1,6 @@
-FROM alpine:latest
+FROM openjdk:15-alpine
 
-RUN apk add --no-cache openjdk15-jdk
+# RUN apk add --no-cache openjdk15-jdk
 
 # WORKDIR /usr
 
