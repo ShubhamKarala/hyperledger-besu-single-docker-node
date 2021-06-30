@@ -7,7 +7,7 @@ FROM openjdk:15-alpine
 COPY config/besu/* /usr/
 
 ENV JAVA_HOME=/usr/local/openjdk-15
-ENV PATH=/usr/local/openjdk-15/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/usr/bin/besu
 ENV JAVA_VERSION=15
 
 CMD ["echo", "Starting the besu node!!!"]
