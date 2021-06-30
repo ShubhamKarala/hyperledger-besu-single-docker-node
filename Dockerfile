@@ -4,7 +4,7 @@ FROM openjdk:15
 # RUN apk add --no-cache libstdc++
 # RUN apk add --no-cache libc6-compat && ln -s /lib/libc.musl-x86_64.so.1 /lib/ld-linux-x86-64.so.2
 
-WORKDIR /opt/besu/bin/
+WORKDIR /opt/besu/
 
 COPY config/ /opt/
 
@@ -16,4 +16,4 @@ ENV JAVA_VERSION=15
 
 CMD ["echo", "Starting the besu node!!!"]
 
-ENTRYPOINT ["./besu", "--network", "dev"]
+ENTRYPOINT ["/opt/besu/node_start.sh"]
