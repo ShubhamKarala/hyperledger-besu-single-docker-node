@@ -8,7 +8,7 @@ rpc-http-enabled=true
 rpc-http-host="0.0.0.0"
 rpc-http-port=8545
 rpc-http-cors-origins=["*"]
-rpc-http-api=ADMIN,ETH,NET,WEB3,MINER
+rpc-http-api=["ADMIN", "ETH", "NET", "WEB3", "MINER"]
 
 # ws
 rpc-ws-enabled=true
