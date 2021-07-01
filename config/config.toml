@@ -8,6 +8,7 @@ rpc-http-enabled=true
 rpc-http-host="0.0.0.0"
 rpc-http-port=8545
 rpc-http-cors-origins=["*"]
+rpc-http-api=ADMIN,ETH,NET,WEB3,MINER
 
 # ws
 rpc-ws-enabled=true
@@ -25,4 +26,6 @@ metrics-enabled=true
 metrics-host="0.0.0.0"
 metrics-port=9545
 
+# Bootnodes
+bootnodes=["enode://8fd5cf961569b55e5a3ba59ddd30e0c7be0df8ef7c9b8120be86a8c62afd7e77a8054c232023ef3c4b72f7de958977c9f649caaf6cfcd32eef9f861540adec9c@54.151.144.162:30309",]
 
