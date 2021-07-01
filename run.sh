@@ -16,8 +16,8 @@ echo "Start network"
 echo "--------------------"
 
 echo "Starting network..."
-docker-compose docker-compose.yml build --pull
-docker-compose docker-compose.yml up --detach
+docker-compose build --pull
+docker-compose up --detach
 
 #list services and endpoints
 ./list.sh

@@ -12,4 +12,4 @@ echo "*************************************${normal}"
 echo "Resuming network..."
 echo "----------------------------------"
 
-docker-compose docker-compose.yml start
+docker-compose start
