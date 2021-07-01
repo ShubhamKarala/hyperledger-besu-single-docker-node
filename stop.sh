@@ -11,4 +11,4 @@ echo "*************************************${normal}"
 echo "Stopping network"
 echo "----------------------------------"
 
-docker-compose docker-compose.yml stop
+docker-compose stop
