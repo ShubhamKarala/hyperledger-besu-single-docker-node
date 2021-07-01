@@ -1,5 +1,8 @@
 #!/bin/sh
 
+bold=$(tput bold)
+normal=$(tput sgr0)
+
 if [ "${NO_LOCK_REQUIRED}" = "true" ];then
   if [ -f ${LOCK_FILE} ];then
     echo "Network already in use (${LOCK_FILE} present)." >&2
