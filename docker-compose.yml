@@ -45,9 +45,8 @@ services:
         ports:
             - 8545:8545/tcp
     explorer:
-        image: "alethio/ethereum-lite-explorer"
-        environment:
-            - APP_NODE_URL=http://rpcnode:8545
+        build: explorer/.
+        image: "network/block-explorer:${BESU_VERSION}"
         depends_on:
             - rpcnode
         ports:
