@@ -1,14 +1,10 @@
 #!/bin/bash -u
 
-NO_LOCK_REQUIRED=false
-
 . ./.env
-. ./.common.sh
 
-
-echo "${bold}*************************************"
+echo "*************************************"
 echo "Sample Network for Besu at ${BESU_VERSION}"
-echo "*************************************${normal}"
+echo "*************************************"
 echo "Stop and remove network..."
 docker-compose down -v
 docker-compose rm -sfv

@@ -25,3 +25,4 @@ p2pip=`awk 'END{print $1}' /etc/hosts`
 # run bootnode with discovery but no bootnodes as it's our bootnode.
 /opt/besu/bin/besu $@ --bootnodes --p2p-host=$p2pip
 
+# /opt/besu/bin/besu $@ --p2p-host=$p2pip
