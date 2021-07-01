@@ -1,0 +1,22 @@
+---
+version: '3.4'
+services: 
+    bootnode:
+        build: 
+            context: besu/.
+            args: 
+                BESU_VERSION: ${BESU_VERSION}
+        image: network/besu:${BESU_VERSION}
+        environment: 
+            - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
+        entrypoint: /opt/besu/bootnode_start.sh --network dev --config-file=/config/config.toml --min-gas-price=0
+        volumes: 
+            - public-keys:${BESU_PUBLIC_KEY_DIRECTORY}
+            - ./config/config.toml:/config/config.toml
+        ports: 
+            - 30303:30303/tcp
+            - 30303:30303/udp
+
+
+volumes: 
+    public-keys:
