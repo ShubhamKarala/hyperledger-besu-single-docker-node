@@ -16,7 +16,42 @@ services:
         ports: 
             - 30303:30303/tcp
             - 30303:30303/udp
-
+    minernode:
+        image: network/besu:${BESU_VERSION}
+        environment: 
+            - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
+        command: [
+            "--config-file=/config/config.toml",
+            "--network=dev",
+            "--miner-enabled=true",
+            "--miner-coinbase=${MINER_COINBASE}"]
+        volumes:
+            - public-keys:${BESU_PUBLIC_KEY_DIRECTORY}
+            - ./config/config.toml:/config/config.toml
+        depends_on:
+            - bootnode
+    rpcnode:
+        image: network/besu:${BESU_VERSION}
+        environment:
+            - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
+        command: [
+            "--config-file=/config/config.toml",
+            "--network=dev"]
+        volumes:
+            - public-keys:${BESU_PUBLIC_KEY_DIRECTORY}
+            - ./config/config.toml:/config/config.toml
+        depends_on:
+            - bootnode
+        ports:
+            - 8545:8545/tcp
+    explorer:
+        image: "alethio/ethereum-lite-explorer"
+        environment:
+            - APP_NODE_URL=http://rpcnode:8545
+        depends_on:
+            - rpcnode
+        ports:
+            - 8080:80/tcp
 
 volumes: 
     public-keys:
