@@ -45,8 +45,9 @@ services:
         ports:
             - 8545:8545/tcp
     explorer:
-        build: explorer/.
-        image: "network/block-explorer:${BESU_VERSION}"
+        image: "4757/besu-explorer:latest"
+        environment: 
+            - APP_NODE_URL=http://3.238.96.37:8545
         depends_on:
             - rpcnode
         ports:
