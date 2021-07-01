@@ -2,8 +2,11 @@
 ARG BESU_VERSION=1.5.5
 FROM 4757/besu-node:$BESU_VERSION
 
+WORKDIR /opt/besu/
+
 # Copy new entrypoint scripts
 COPY --chown=besu:besu *_start.sh /opt/besu/
+RUN chmod +x *_start.sh
 
 # Install a dos 2 unix EOL converter (supporting either alpine or ubuntu images)
 USER root
