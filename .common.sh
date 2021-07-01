@@ -10,7 +10,7 @@ if [ "${NO_LOCK_REQUIRED}" = "true" ];then
     exit 1
   fi
 else
-  version=$SAMPLE_VERSION
+  version=$BESU_VERSION
   composeFile=""
   if [ -f ${LOCK_FILE} ]; then
     #read the first line of the lock file and store the value as it's the compose file option
