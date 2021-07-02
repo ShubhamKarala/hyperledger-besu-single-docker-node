@@ -9,40 +9,13 @@ services:
         image: network/besu:${BESU_VERSION}
         environment: 
             - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
-        entrypoint: /opt/besu/bootnode_start.sh --network dev --config-file=/config/config.toml --min-gas-price=0
+        entrypoint: /opt/besu/bin/besu --network dev --config-file=/config/config.toml --min-gas-price=0 --miner-enabled=true --miner-coinbase=${MINER_COINBASE}
         volumes: 
             - public-keys:${BESU_PUBLIC_KEY_DIRECTORY}
             - ./config/config.toml:/config/config.toml
         ports: 
             - 30303:30303/tcp
             - 30303:30303/udp
-    minernode:
-        image: network/besu:${BESU_VERSION}
-        environment: 
-            - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
-        command: [
-            "--config-file=/config/config.toml",
-            "--network=dev",
-            "--miner-enabled=true",
-            "--miner-coinbase=${MINER_COINBASE}"]
-        volumes:
-            - public-keys:${BESU_PUBLIC_KEY_DIRECTORY}
-            - ./config/config.toml:/config/config.toml
-        depends_on:
-            - bootnode
-    rpcnode:
-        image: network/besu:${BESU_VERSION}
-        environment:
-            - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
-        command: [
-            "--config-file=/config/config.toml",
-            "--network=dev"]
-        volumes:
-            - public-keys:${BESU_PUBLIC_KEY_DIRECTORY}
-            - ./config/config.toml:/config/config.toml
-        depends_on:
-            - bootnode
-        ports:
             - 8545:8545/tcp
     explorer:
         image: "4757/besu-explorer:latest"
