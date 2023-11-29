@@ -17,14 +17,6 @@ services:
             - 30303:30303/tcp
             - 30303:30303/udp
             - 8545:8545/tcp
-    explorer:
-        image: "4757/besu-explorer:latest"
-        environment: 
-            - APP_NODE_URL=${SERVER_RPC_URL}
-        depends_on:
-            - rpcnode
-        ports:
-            - 8080:80/tcp
 
 volumes: 
     public-keys:
